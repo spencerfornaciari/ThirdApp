@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8916764C181DA1A4007F21BD /* UIColor+ColorAddons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8916764B181DA1A4007F21BD /* UIColor+ColorAddons.m */; };
+		89588479181CA25B00DA5514 /* SFPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89588478181CA25B00DA5514 /* SFPostModel.m */; };
 		89BC491B181C91130013738C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BC491A181C91130013738C /* Foundation.framework */; };
 		89BC491D181C91130013738C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BC491C181C91130013738C /* CoreGraphics.framework */; };
 		89BC491F181C91130013738C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BC491E181C91130013738C /* UIKit.framework */; };
@@ -14,13 +16,17 @@
 		89BC4927181C91130013738C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BC4926181C91130013738C /* main.m */; };
 		89BC492B181C91130013738C /* SFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BC492A181C91130013738C /* SFAppDelegate.m */; };
 		89BC492E181C91130013738C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89BC492C181C91130013738C /* Main.storyboard */; };
-		89BC4931181C91130013738C /* SFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BC4930181C91130013738C /* SFViewController.m */; };
 		89BC4933181C91130013738C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89BC4932181C91130013738C /* Images.xcassets */; };
 		89BC493A181C91130013738C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BC4939181C91130013738C /* XCTest.framework */; };
 		89BC493B181C91130013738C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BC491A181C91130013738C /* Foundation.framework */; };
 		89BC493C181C91130013738C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BC491E181C91130013738C /* UIKit.framework */; };
 		89BC4944181C91130013738C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89BC4942181C91130013738C /* InfoPlist.strings */; };
 		89BC4946181C91130013738C /* MySocialAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BC4945181C91130013738C /* MySocialAppTests.m */; };
+		89BC4951181C91490013738C /* SFPostTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BC4950181C91490013738C /* SFPostTableViewController.m */; };
+		89BC4953181C915C0013738C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BC4952181C915C0013738C /* CoreData.framework */; };
+		89BC4956181C92BD0013738C /* PostCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89BC4954181C92BD0013738C /* PostCoreData.xcdatamodeld */; };
+		89BC4959181C94C90013738C /* SFAddPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BC4958181C94C90013738C /* SFAddPostViewController.m */; };
+		89BC495C181C9B930013738C /* SFPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89BC495B181C9B930013738C /* SFPostTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8916764A181DA1A4007F21BD /* UIColor+ColorAddons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+ColorAddons.h"; path = "../../../../Desktop/UIColor+ColorAddons.h"; sourceTree = "<group>"; };
+		8916764B181DA1A4007F21BD /* UIColor+ColorAddons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+ColorAddons.m"; path = "../../../../Desktop/UIColor+ColorAddons.m"; sourceTree = "<group>"; };
+		89588477181CA25B00DA5514 /* SFPostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPostModel.h; sourceTree = "<group>"; };
+		89588478181CA25B00DA5514 /* SFPostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPostModel.m; sourceTree = "<group>"; };
 		89BC4917181C91130013738C /* MySocialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySocialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89BC491A181C91130013738C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		89BC491C181C91130013738C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -45,14 +55,20 @@
 		89BC4929181C91130013738C /* SFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFAppDelegate.h; sourceTree = "<group>"; };
 		89BC492A181C91130013738C /* SFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFAppDelegate.m; sourceTree = "<group>"; };
 		89BC492D181C91130013738C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		89BC492F181C91130013738C /* SFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFViewController.h; sourceTree = "<group>"; };
-		89BC4930181C91130013738C /* SFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFViewController.m; sourceTree = "<group>"; };
 		89BC4932181C91130013738C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		89BC4938181C91130013738C /* MySocialAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MySocialAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89BC4939181C91130013738C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		89BC4941181C91130013738C /* MySocialAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MySocialAppTests-Info.plist"; sourceTree = "<group>"; };
 		89BC4943181C91130013738C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89BC4945181C91130013738C /* MySocialAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySocialAppTests.m; sourceTree = "<group>"; };
+		89BC494F181C91490013738C /* SFPostTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPostTableViewController.h; sourceTree = "<group>"; };
+		89BC4950181C91490013738C /* SFPostTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPostTableViewController.m; sourceTree = "<group>"; };
+		89BC4952181C915C0013738C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		89BC4955181C92BD0013738C /* PostCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PostCoreData.xcdatamodel; sourceTree = "<group>"; };
+		89BC4957181C94C90013738C /* SFAddPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAddPostViewController.h; sourceTree = "<group>"; };
+		89BC4958181C94C90013738C /* SFAddPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAddPostViewController.m; sourceTree = "<group>"; };
+		89BC495A181C9B930013738C /* SFPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPostTableViewCell.h; sourceTree = "<group>"; };
+		89BC495B181C9B930013738C /* SFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPostTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89BC4953181C915C0013738C /* CoreData.framework in Frameworks */,
 				89BC491D181C91130013738C /* CoreGraphics.framework in Frameworks */,
 				89BC491F181C91130013738C /* UIKit.framework in Frameworks */,
 				89BC491B181C91130013738C /* Foundation.framework in Frameworks */,
@@ -101,6 +118,7 @@
 		89BC4919181C91130013738C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				89BC4952181C915C0013738C /* CoreData.framework */,
 				89BC491A181C91130013738C /* Foundation.framework */,
 				89BC491C181C91130013738C /* CoreGraphics.framework */,
 				89BC491E181C91130013738C /* UIKit.framework */,
@@ -112,13 +130,22 @@
 		89BC4920181C91130013738C /* MySocialApp */ = {
 			isa = PBXGroup;
 			children = (
+				8916764A181DA1A4007F21BD /* UIColor+ColorAddons.h */,
+				8916764B181DA1A4007F21BD /* UIColor+ColorAddons.m */,
 				89BC4929181C91130013738C /* SFAppDelegate.h */,
 				89BC492A181C91130013738C /* SFAppDelegate.m */,
 				89BC492C181C91130013738C /* Main.storyboard */,
-				89BC492F181C91130013738C /* SFViewController.h */,
-				89BC4930181C91130013738C /* SFViewController.m */,
 				89BC4932181C91130013738C /* Images.xcassets */,
 				89BC4921181C91130013738C /* Supporting Files */,
+				89BC494F181C91490013738C /* SFPostTableViewController.h */,
+				89BC4950181C91490013738C /* SFPostTableViewController.m */,
+				89BC4954181C92BD0013738C /* PostCoreData.xcdatamodeld */,
+				89BC4957181C94C90013738C /* SFAddPostViewController.h */,
+				89BC4958181C94C90013738C /* SFAddPostViewController.m */,
+				89BC495A181C9B930013738C /* SFPostTableViewCell.h */,
+				89BC495B181C9B930013738C /* SFPostTableViewCell.m */,
+				89588477181CA25B00DA5514 /* SFPostModel.h */,
+				89588478181CA25B00DA5514 /* SFPostModel.m */,
 			);
 			path = MySocialApp;
 			sourceTree = "<group>";
@@ -250,9 +277,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8916764C181DA1A4007F21BD /* UIColor+ColorAddons.m in Sources */,
 				89BC4927181C91130013738C /* main.m in Sources */,
-				89BC4931181C91130013738C /* SFViewController.m in Sources */,
 				89BC492B181C91130013738C /* SFAppDelegate.m in Sources */,
+				89BC4956181C92BD0013738C /* PostCoreData.xcdatamodeld in Sources */,
+				89BC4959181C94C90013738C /* SFAddPostViewController.m in Sources */,
+				89BC495C181C9B930013738C /* SFPostTableViewCell.m in Sources */,
+				89BC4951181C91490013738C /* SFPostTableViewController.m in Sources */,
+				89588479181CA25B00DA5514 /* SFPostModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +493,7 @@
 				89BC494B181C91130013738C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		89BC494C181C91130013738C /* Build configuration list for PBXNativeTarget "MySocialAppTests" */ = {
 			isa = XCConfigurationList;
@@ -469,8 +502,22 @@
 				89BC494E181C91130013738C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		89BC4954181C92BD0013738C /* PostCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				89BC4955181C92BD0013738C /* PostCoreData.xcdatamodel */,
+			);
+			currentVersion = 89BC4955181C92BD0013738C /* PostCoreData.xcdatamodel */;
+			path = PostCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 89BC490F181C91130013738C /* Project object */;
 }

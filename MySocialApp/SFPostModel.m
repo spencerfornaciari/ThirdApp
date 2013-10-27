@@ -1,13 +1,13 @@
 //
-//  SFViewController.h
+//  SFPostModel.m
 //  MySocialApp
 //
 //  Created by Spencer Fornaciari on 10/26/13.
 //  Copyright (c) 2013 Spencer Fornaciari. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SFPostModel.h"
 
-@interface SFViewController : UIViewController
+@implementation SFPostModel
 
 @end
