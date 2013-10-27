@@ -52,44 +52,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)saveButton:(id)sender {
-    NSManagedObjectContext *context = [self managedObjectContext];
+- (IBAction)saveButton:(id)sender
+{    
+    SFPostModel *newPostItem = [[SFPostModel alloc] init];
+    newPostItem.userName = self.submitUserName.text;
+    newPostItem.title = self.submitTitle.text;
+    newPostItem.content = self.submitContent.text;
+    newPostItem.timeStamp = [NSDate date];
     
-    if (self.post) {
-        // Update existing device
-        [self.post setValue:self.submitUserName.text forKey:@"userName"];
-        [self.post setValue:self.submitTitle.text forKey:@"title"];
-        [self.post setValue:self.submitContent.text forKey:@"content"];
-        [self.post setValue:[NSDate date] forKey:@"timeStamp"];
-        
-    } else {
-        // Create a new device
-        NSManagedObject *newPost = [NSEntityDescription insertNewObjectForEntityForName:@"PostCoreData" inManagedObjectContext:context];
-        [newPost setValue:self.submitUserName.text forKey:@"userName"];
-        [newPost setValue:self.submitTitle.text forKey:@"title"];
-        [newPost setValue:self.submitContent.text forKey:@"content"];
-        [newPost setValue:[NSDate date] forKey:@"timeStamp"];
-        
-        
-        
-        /*SFPostModel *newPostItem;
-        newPostItem.userName = self.submitUserName.text;
-        newPostItem.title = self.submitTitle.text;
-        newPostItem.content = self.submitContent.text;
-        newPostItem.timeStamp = [NSDate date];
-        
-        //[self.delegateItem addPost:newPostItem];*/
-        
-        //[self.delegate addPost:newPost];
-        
-    }
-    
-    NSError *error = nil;
-    // Save the object to persistent store
-    if (![context save:&error]) {
-        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-    }
-    
+    [self.delegateItem addPost:newPostItem];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

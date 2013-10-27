@@ -30,8 +30,6 @@
     self.colorArray = [[NSMutableArray alloc] init];
     
     
-    
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -46,6 +44,8 @@
     // Fetch the devices from persistent data store
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"PostCoreData"];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
     self.posts = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     
     [self.tableView reloadData];
@@ -53,8 +53,6 @@
     for (int i = 0; i < self.posts.count ; (i = i + 1))
     {
         [self.colorArray addObject:[UIColor getRandomColor]];
-        NSLog(@"%d", i);
-        NSLog(@"%@", self.colorArray[i]);
     }
 }
 
@@ -90,17 +88,12 @@
     [dateFormatter setDateFormat:@"h:mm a 'on' MM/dd/yyyy"];
     NSString *postDate = [dateFormatter stringFromDate:[post valueForKey:@"timeStamp"]];
     
-    
     cell.userNameLabel.text = [post valueForKey:@"userName"];
     cell.titleLabel.text = [post valueForKey:@"title"];
     cell.contentLabel.text = [post valueForKey:@"content"];
     cell.timeStampLabel.text = postDate;
     
-   cell.backgroundColor = self.colorArray[indexPath.row];
-    
-    
-    //[cell.textLabel setText:[NSString stringWithFormat:@"%@", [post valueForKey:@"userName"]]];
-    //[cell.detailTextLabel setText:[post valueForKey:@"title"]];
+    cell.backgroundColor = self.colorArray[indexPath.row];
     
     return cell;
 }
@@ -150,10 +143,18 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"EditPostSegue"]) {
+    if ([[segue identifier] isEqualToString:@"EditPostSegue"])
+    {
         NSManagedObject *selectedPost = [self.posts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        SFEditPostViewController *destViewController = segue.destinationViewController;
+        destViewController.editPost = selectedPost;
+        destViewController.delegateEdit = self;
+    }
+    
+    if ([[segue identifier] isEqualToString:@"AddPostSegue"])
+    {
         SFAddPostViewController *destViewController = segue.destinationViewController;
-        destViewController.post = selectedPost;
+        destViewController.delegateItem = self;
     }
 }
 
@@ -202,29 +203,18 @@
     [newObject setValue:addNewPost.title forKey:@"title"];
     [newObject setValue:addNewPost.content forKey:@"content"];
     [newObject setValue:addNewPost.timeStamp forKey:@"timeStamp"];
+    [self.colorArray insertObject:[UIColor getRandomColor] atIndex:0];
+}
+
+-(void)updatePost:(SFPostModel *)editOldPost forObject:(NSManagedObject *)oldObject
+{
+    //NSLog(@"%@, %@, %@", editOldPost.userName, editOldPost.title, editOldPost.content);
+    
+    [oldObject setValue:editOldPost.userName forKey:@"userName"];
+    [oldObject setValue:editOldPost.title forKey:@"title"];
+    [oldObject setValue:editOldPost.content forKey:@"content"];
+    [oldObject setValue:editOldPost.timeStamp forKey:@"timeStamp"];
     
 }
-
--(SFPostModel *)editPost:(SFPostModel *)editOldPost
-{
-    return nil;
-}
-
-/*-(void)addPostToList:(SFPost *)addSFPost
- {
- 
- PFObject *newSFPost = [PFObject objectWithClassName:@"PostObject"];
- newSFPost[@"userName"] = addSFPost.userName;
- newSFPost[@"title"] = addSFPost.title;
- newSFPost[@"content"] = addSFPost.content;
- [self.time insertObject:addSFPost.timeStamp atIndex:0];
- [newSFPost saveInBackground];
- 
- 
- [self.posts insertObject:newSFPost atIndex:0];
- 
- [self.tableView reloadData];
- 
- }*/
 
 @end

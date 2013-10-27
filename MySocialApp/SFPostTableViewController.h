@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "SFPostTableViewCell.h"
 #import "SFAddPostViewController.h"
+#import "SFEditPostViewController.h"
 #import "UIColor+ColorAddons.h"
 
-@interface SFPostTableViewController : UITableViewController <SFAddItemViewControllerDelegate>
+@interface SFPostTableViewController : UITableViewController <SFAddItemViewControllerDelegate, SFEditItemViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *posts;
 @property (nonatomic, strong) NSMutableArray *colorArray;

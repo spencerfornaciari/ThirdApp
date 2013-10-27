@@ -12,7 +12,6 @@
 
 @protocol SFAddItemViewControllerDelegate <NSObject>
 -(void)addPost:(SFPostModel *)addNewPost;
--(SFPostModel *)editPost:(SFPostModel *)editOldPost;
 @end
 
 @interface SFAddPostViewController : UIViewController

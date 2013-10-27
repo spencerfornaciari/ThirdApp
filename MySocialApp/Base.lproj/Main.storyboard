@@ -52,7 +52,7 @@
                                     <outlet property="timeStampLabel" destination="6yJ-54-VKx" id="eTc-2H-zQd"/>
                                     <outlet property="titleLabel" destination="bua-Sh-bZh" id="f1F-mV-1PA"/>
                                     <outlet property="userNameLabel" destination="jUq-w3-I0C" id="9wX-cz-ekr"/>
-                                    <segue destination="nVK-vV-ZdU" kind="push" identifier="EditPostSegue" id="229-ea-Wud"/>
+                                    <segue destination="LHT-Rh-Oly" kind="push" identifier="EditPostSegue" id="pOg-5f-cBJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -73,7 +73,57 @@
             </objects>
             <point key="canvasLocation" x="693" y="38"/>
         </scene>
-        <!--Add Post View Controller-->
+        <!--Edit Post View Controller - Edit Post-->
+        <scene sceneID="w6c-4z-DLR">
+            <objects>
+                <viewController id="LHT-Rh-Oly" customClass="SFEditPostViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="usZ-Ju-uNp"/>
+                        <viewControllerLayoutGuide type="bottom" id="iEH-2z-l3Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fZk-EI-iNJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="edit username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VyR-9S-OLz">
+                                <rect key="frame" x="20" y="82" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="edit title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9sK-7a-uBo">
+                                <rect key="frame" x="20" y="127" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="edit content" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kLW-AA-XZE">
+                                <rect key="frame" x="20" y="173" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit Post" id="0pL-oy-XwF">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Oct-TG-K9b">
+                            <connections>
+                                <action selector="saveEditButton:" destination="LHT-Rh-Oly" id="9Eu-wJ-Pvy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="editContent" destination="kLW-AA-XZE" id="5Ek-nv-CgX"/>
+                        <outlet property="editTitle" destination="9sK-7a-uBo" id="5au-AL-4wY"/>
+                        <outlet property="editUserName" destination="VyR-9S-OLz" id="Qsh-mr-xdh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ADj-wJ-vZ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1230" y="-252"/>
+        </scene>
+        <!--Add Post View Controller - Add New Post-->
         <scene sceneID="fgW-4O-sOH">
             <objects>
                 <viewController id="nVK-vV-ZdU" customClass="SFAddPostViewController" sceneMemberID="viewController">
@@ -106,7 +156,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="E0E-GA-K8m">
+                    <navigationItem key="navigationItem" title="Add New Post" id="E0E-GA-K8m">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="aSu-yS-gid">
                             <connections>
                                 <action selector="saveButton:" destination="nVK-vV-ZdU" id="RfM-dN-a0v"/>
@@ -121,7 +171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6zJ-gY-OVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1148" y="38"/>
+            <point key="canvasLocation" x="1224" y="406"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KmB-a9-d1p">
@@ -147,7 +197,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="rID-1w-jrb"/>
-    </inferredMetricsTieBreakers>
 </document>

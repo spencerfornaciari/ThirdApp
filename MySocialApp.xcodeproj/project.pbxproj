@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8916764C181DA1A4007F21BD /* UIColor+ColorAddons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8916764B181DA1A4007F21BD /* UIColor+ColorAddons.m */; };
+		8916764F181DB062007F21BD /* SFEditPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8916764E181DB062007F21BD /* SFEditPostViewController.m */; };
 		89588479181CA25B00DA5514 /* SFPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89588478181CA25B00DA5514 /* SFPostModel.m */; };
 		89BC491B181C91130013738C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BC491A181C91130013738C /* Foundation.framework */; };
 		89BC491D181C91130013738C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BC491C181C91130013738C /* CoreGraphics.framework */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		8916764A181DA1A4007F21BD /* UIColor+ColorAddons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+ColorAddons.h"; path = "../../../../Desktop/UIColor+ColorAddons.h"; sourceTree = "<group>"; };
 		8916764B181DA1A4007F21BD /* UIColor+ColorAddons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+ColorAddons.m"; path = "../../../../Desktop/UIColor+ColorAddons.m"; sourceTree = "<group>"; };
+		8916764D181DB061007F21BD /* SFEditPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFEditPostViewController.h; sourceTree = "<group>"; };
+		8916764E181DB062007F21BD /* SFEditPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFEditPostViewController.m; sourceTree = "<group>"; };
 		89588477181CA25B00DA5514 /* SFPostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPostModel.h; sourceTree = "<group>"; };
 		89588478181CA25B00DA5514 /* SFPostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPostModel.m; sourceTree = "<group>"; };
 		89BC4917181C91130013738C /* MySocialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySocialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +149,8 @@
 				89BC495B181C9B930013738C /* SFPostTableViewCell.m */,
 				89588477181CA25B00DA5514 /* SFPostModel.h */,
 				89588478181CA25B00DA5514 /* SFPostModel.m */,
+				8916764D181DB061007F21BD /* SFEditPostViewController.h */,
+				8916764E181DB062007F21BD /* SFEditPostViewController.m */,
 			);
 			path = MySocialApp;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8916764C181DA1A4007F21BD /* UIColor+ColorAddons.m in Sources */,
+				8916764F181DB062007F21BD /* SFEditPostViewController.m in Sources */,
 				89BC4927181C91130013738C /* main.m in Sources */,
 				89BC492B181C91130013738C /* SFAppDelegate.m in Sources */,
 				89BC4956181C92BD0013738C /* PostCoreData.xcdatamodeld in Sources */,
