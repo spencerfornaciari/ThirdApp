@@ -26,8 +26,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.colorArray = [[NSMutableArray alloc] initWithObjects:[UIColor blueColor], nil];
     
-    self.colorArray = [[NSMutableArray alloc] init];
+    
+    NSDictionary *createJSON = [NSDictionary dictionaryWithObjectsAndKeys:@"Spencer Test 3", @"username", @"New Post 3", @"title", @"Let's go for three", @"content", nil];
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:createJSON
+                                                       options:NSJSONWritingPrettyPrinted error:nil];
+    
+   
+    //SFURLPostSession *newPost = [[SFURLPostSession alloc] init];
+    //NSDictionary *newDict = [newPost getURLData];
+    
+    //[newPost sendURLData:jsonData];
     
     
     // Uncomment the following line to preserve selection between presentations.
@@ -50,10 +60,18 @@
     
     [self.tableView reloadData];
     
-    for (int i = 0; i < self.posts.count ; (i = i + 1))
-    {
-        [self.colorArray addObject:[UIColor getRandomColor]];
+    NSLog(@"%@", self.colorArray);
+    
+    if (self.colorArray != nil) {
+        for (int i = 0; i < self.posts.count ; (i = i + 1))
+        {
+                  [self.colorArray insertObject:[UIColor getRandomColor] atIndex:i];
+                   NSLog(@"%@", self.colorArray[i]);
+        }
+        
     }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -215,6 +233,22 @@
     [oldObject setValue:editOldPost.content forKey:@"content"];
     [oldObject setValue:editOldPost.timeStamp forKey:@"timeStamp"];
     
+}
+
++(void)sendURLData:(NSData *)uploadData
+{
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+    
+    NSURL *sendURL = [NSURL URLWithString:@"http://cfpost.minddiaper.com/post/create"];
+    NSMutableURLRequest *newRequest = [NSMutableURLRequest requestWithURL:sendURL];
+    [newRequest setHTTPMethod:@"POST"];
+    [newRequest setHTTPBody:uploadData];
+    NSURLSessionDataTask *uploadTask = [session dataTaskWithRequest:newRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+    }];
+    [uploadTask resume];
 }
 
 @end
