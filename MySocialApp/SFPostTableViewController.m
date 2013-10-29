@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.colorArray = [[NSMutableArray alloc] initWithObjects:[UIColor blueColor], nil];
+    
     
     
     NSDictionary *createJSON = [NSDictionary dictionaryWithObjectsAndKeys:@"Spencer Test 3", @"username", @"New Post 3", @"title", @"Let's go for three", @"content", nil];
@@ -58,11 +58,13 @@
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     self.posts = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     
-    [self.tableView reloadData];
     
-    NSLog(@"%@", self.colorArray);
-    
-    if (self.colorArray != nil) {
+//    NSLog(@"%@", self.colorArray);
+//
+    if (self.colorArray.count == 0) {
+        
+        self.colorArray = [[NSMutableArray alloc] init];
+        
         for (int i = 0; i < self.posts.count ; (i = i + 1))
         {
                   [self.colorArray insertObject:[UIColor getRandomColor] atIndex:i];
@@ -70,6 +72,9 @@
         }
         
     }
+    
+    [self.tableView reloadData];
+
     
     
 }
