@@ -58,9 +58,7 @@
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     self.posts = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     
-    
-//    NSLog(@"%@", self.colorArray);
-//
+
     if (self.colorArray.count == 0) {
         
         self.colorArray = [[NSMutableArray alloc] init];
@@ -74,9 +72,6 @@
     }
     
     [self.tableView reloadData];
-
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -230,9 +225,7 @@
 }
 
 -(void)updatePost:(SFPostModel *)editOldPost forObject:(NSManagedObject *)oldObject
-{
-    //NSLog(@"%@, %@, %@", editOldPost.userName, editOldPost.title, editOldPost.content);
-    
+{    
     [oldObject setValue:editOldPost.userName forKey:@"userName"];
     [oldObject setValue:editOldPost.title forKey:@"title"];
     [oldObject setValue:editOldPost.content forKey:@"content"];
