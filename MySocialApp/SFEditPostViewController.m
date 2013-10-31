@@ -53,21 +53,21 @@
 
 -(IBAction)saveEditButton:(id)sender
 {
-//    SFPostModel *updatedPostItem = [[SFPostModel alloc] init];
-//    updatedPostItem.userName = self.editUserName.text;
-//    updatedPostItem.title = self.editTitle.text;
-//    updatedPostItem.content = self.editContent.text;
-//    updatedPostItem.timeStamp = [NSDate date];
+    SFPostModel *updatedPostItem = [[SFPostModel alloc] init];
+    updatedPostItem.userName = self.editUserName.text;
+    updatedPostItem.title = self.editTitle.text;
+    updatedPostItem.content = self.editContent.text;
+    updatedPostItem.timeStamp = [NSDate date];
     
-    NSDictionary *updateJSONToSend = [[NSDictionary alloc] initWithObjectsAndKeys:self.editUserName.text, @"userName",                                                                                                           self.editTitle.text, @"title",
-                                   
-                                   self.editContent.text, @"content", nil];
+    //Update JSON item in feed
     
-    NSString *id = @"5269fac259355a0b00000002";
+//    NSDictionary *updateJSONToSend = [[NSDictionary alloc] initWithObjectsAndKeys:self.editUserName.text, @"userName",                                                                                                           self.editTitle.text, @"title", self.editContent.text, @"content", nil];
+//    
+//    NSString *id = @"5269fac259355a0b00000002";
+//    
+//    [self updateJSON:updateJSONToSend updateID:id];
     
-    [self updateJSON:updateJSONToSend updateID:id];
-    
-    //[self.delegateEdit updatePost:updatedPostItem forObject:self.editPost];
+    [self.delegateEdit updatePost:updatedPostItem forObject:self.editPost];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

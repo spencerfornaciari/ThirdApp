@@ -103,8 +103,6 @@
     cell.contentLabel.text = [post valueForKey:@"content"];
     cell.timeStampLabel.text = postDate;
     
-    //[cell setLabelValues:_posts];
-    
     //cell.userNameLabel.text = [_JSONArray[indexPath.row] objectForKey:@"author"];
     
     cell.backgroundColor = self.colorArray[indexPath.row];
@@ -239,7 +237,8 @@
     _JSONArray = _JSONDictionary[@"posts"];
     
     
-    //NSDictionary *tempDictionary = [[NSDictionary alloc] init];
+    //NSURLSession JSON download
+//  NSDictionary *tempDictionary = [[NSDictionary alloc] init];
     
 //    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
 //    NSURLSession *delegateFreeSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];

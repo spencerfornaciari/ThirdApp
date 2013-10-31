@@ -64,8 +64,6 @@
     newPostItem.timeStamp = [NSDate date];
     
     [self.delegateItem addPost:newPostItem];
-
-    
     
     //Save to JSON
 //    NSDictionary *setJSONToSend = [[NSDictionary alloc] initWithObjectsAndKeys:self.submitUserName.text, @"userName",
