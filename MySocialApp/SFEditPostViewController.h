@@ -23,6 +23,8 @@
 
 @property (strong) NSManagedObject *editPost;
 
+-(void)updateJSON:(NSDictionary *)updateDictionary updateID:(NSString *)idString;
+
 -(IBAction)saveEditButton:(id)sender;
 
 @end

@@ -53,14 +53,47 @@
 
 -(IBAction)saveEditButton:(id)sender
 {
-    SFPostModel *updatedPostItem = [[SFPostModel alloc] init];
-    updatedPostItem.userName = self.editUserName.text;
-    updatedPostItem.title = self.editTitle.text;
-    updatedPostItem.content = self.editContent.text;
-    updatedPostItem.timeStamp = [NSDate date];
+//    SFPostModel *updatedPostItem = [[SFPostModel alloc] init];
+//    updatedPostItem.userName = self.editUserName.text;
+//    updatedPostItem.title = self.editTitle.text;
+//    updatedPostItem.content = self.editContent.text;
+//    updatedPostItem.timeStamp = [NSDate date];
     
-    [self.delegateEdit updatePost:updatedPostItem forObject:self.editPost];
+    NSDictionary *updateJSONToSend = [[NSDictionary alloc] initWithObjectsAndKeys:self.editUserName.text, @"userName",                                                                                                           self.editTitle.text, @"title",
+                                   
+                                   self.editContent.text, @"content", nil];
+    
+    NSString *id = @"5269fac259355a0b00000002";
+    
+    [self updateJSON:updateJSONToSend updateID:id];
+    
+    //[self.delegateEdit updatePost:updatedPostItem forObject:self.editPost];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+//Update JSON Post from post ID
+-(void)updateJSON:(NSDictionary *)updateDictionary updateID:(NSString *)idString
+{
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:updateDictionary
+                                                       options:NSJSONWritingPrettyPrinted error:nil];
+    
+    NSString *defaultURL = @"http://cfpost.minddiaper.com/post/update/";
+    NSString *newURL = [NSString stringWithFormat:@"%@%@", defaultURL, idString];
+    NSLog(@"%@", newURL);
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+    
+    NSURL *sendURL = [NSURL URLWithString:newURL];
+    NSMutableURLRequest *newRequest = [NSMutableURLRequest requestWithURL:sendURL];
+    [newRequest setHTTPMethod:@"POST"];
+    [newRequest setHTTPBody:jsonData];
+    [newRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    NSURLSessionDataTask *uploadTask = [session dataTaskWithRequest:newRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+    }];
+    [uploadTask resume];
 }
 
 @end
