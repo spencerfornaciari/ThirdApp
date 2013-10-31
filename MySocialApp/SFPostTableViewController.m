@@ -13,6 +13,11 @@
 @end
 
 @implementation SFPostTableViewController
+{
+    NSDictionary *_tempDictionary;
+    NSDictionary *_JSONDictionary;
+    NSArray *_JSONArray;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,18 +32,7 @@
 {
     [super viewDidLoad];
     
-    
-    
-    NSDictionary *createJSON = [NSDictionary dictionaryWithObjectsAndKeys:@"Spencer Test 3", @"username", @"New Post 3", @"title", @"Let's go for three", @"content", nil];
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:createJSON
-                                                       options:NSJSONWritingPrettyPrinted error:nil];
-    
-   
-    //SFURLPostSession *newPost = [[SFURLPostSession alloc] init];
-    //NSDictionary *newDict = [newPost getURLData];
-    
-    //[newPost sendURLData:jsonData];
-    
+    [self getURLData];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -58,17 +52,15 @@
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     self.posts = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     
-
-    if (self.colorArray.count == 0) {
-        
+    //Set the random color array for the cells
+    if (self.colorArray.count == 0)
+    {
         self.colorArray = [[NSMutableArray alloc] init];
         
         for (int i = 0; i < self.posts.count ; (i = i + 1))
         {
-                  [self.colorArray insertObject:[UIColor getRandomColor] atIndex:i];
-                   NSLog(@"%@", self.colorArray[i]);
+            [self.colorArray insertObject:[UIColor getRandomColor] atIndex:i];
         }
-        
     }
     
     [self.tableView reloadData];
@@ -110,6 +102,10 @@
     cell.titleLabel.text = [post valueForKey:@"title"];
     cell.contentLabel.text = [post valueForKey:@"content"];
     cell.timeStampLabel.text = postDate;
+    
+    //[cell setLabelValues:_posts];
+    
+    //cell.userNameLabel.text = [_JSONArray[indexPath.row] objectForKey:@"author"];
     
     cell.backgroundColor = self.colorArray[indexPath.row];
     
@@ -233,20 +229,29 @@
     
 }
 
-+(void)sendURLData:(NSData *)uploadData
+
+//Take a JSON feed an set it as an NSDictionary variable
+-(void)getURLData
 {
+    NSURL *url = [NSURL URLWithString:@"http://blog.teamtreehouse.com/api/get_recent_summary/"];
+    NSData *JSONData = [NSData dataWithContentsOfURL:url];
+    _JSONDictionary = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:nil];
+    _JSONArray = _JSONDictionary[@"posts"];
     
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     
-    NSURL *sendURL = [NSURL URLWithString:@"http://cfpost.minddiaper.com/post/create"];
-    NSMutableURLRequest *newRequest = [NSMutableURLRequest requestWithURL:sendURL];
-    [newRequest setHTTPMethod:@"POST"];
-    [newRequest setHTTPBody:uploadData];
-    NSURLSessionDataTask *uploadTask = [session dataTaskWithRequest:newRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-    }];
-    [uploadTask resume];
+    //NSDictionary *tempDictionary = [[NSDictionary alloc] init];
+    
+//    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    NSURLSession *delegateFreeSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
+//    
+//    [[delegateFreeSession dataTaskWithURL: [NSURL URLWithString: @"http://blog.teamtreehouse.com/api/get_recent_summary/"]
+//                        completionHandler:^(NSData *data, NSURLResponse *response,
+//                                            NSError *error) {
+//                            _tempDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+//                            NSLog(@"%@", _tempDictionary);
+//                            
+//                        }]
+//     resume];
 }
 
 @end

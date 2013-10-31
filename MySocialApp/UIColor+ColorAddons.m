@@ -11,6 +11,8 @@
 
 @implementation UIColor (ColorAddons)
 
+//A class function to get a random color
+
 +(UIColor *)getRandomColor
 {
     float red = arc4random_uniform(255)/255.0;
@@ -21,6 +23,8 @@
 
     return randomColor;
 }
+
+//A class function that returns a lighter color when provided a UI Color
 
 +(UIColor *)lightenOldColor:(UIColor *)oldColor
 {

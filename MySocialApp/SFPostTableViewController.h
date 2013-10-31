@@ -11,11 +11,12 @@
 #import "SFAddPostViewController.h"
 #import "SFEditPostViewController.h"
 #import "UIColor+ColorAddons.h"
-#import "SFURLPostSession.h"
 
 @interface SFPostTableViewController : UITableViewController <SFAddItemViewControllerDelegate, SFEditItemViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *posts;
 @property (nonatomic, strong) NSMutableArray *colorArray;
+
+-(void)getURLData;
 
 @end

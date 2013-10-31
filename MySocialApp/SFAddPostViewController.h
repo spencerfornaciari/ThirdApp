@@ -24,6 +24,8 @@
 
 @property (strong) NSManagedObject *post;
 
+-(void)sendJSON:(NSDictionary *)jsonDictionary;
+
 -(IBAction)saveButton:(id)sender;
 
 @end

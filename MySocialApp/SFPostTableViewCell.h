@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SFPostModel.h"
 
 @interface SFPostTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *timeStampLabel;
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) IBOutlet UILabel *contentLabel;
+@property (weak, nonatomic) SFPostModel *post;
 
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeStampLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
+- (void)setLabelValues:(SFPostModel *)post;
 
 @end
