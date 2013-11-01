@@ -54,17 +54,7 @@
 }
 
 - (IBAction)saveButton:(id)sender
-{    
-//
-      //Save to Core Data
-//    SFPostModel *newPostItem = [[SFPostModel alloc] init];
-//    newPostItem.userName = self.submitUserName.text;
-//    newPostItem.title = self.submitTitle.text;
-//    newPostItem.content = self.submitContent.text;
-//    newPostItem.timeStamp = [NSDate date];
-//    
-//    [self.delegateItem addPost:newPostItem];
-    
+{
     //Save to JSON
     NSDictionary *setJSONToSend = [[NSDictionary alloc] initWithObjectsAndKeys:self.submitUserName.text, @"userName",
                                                                                 self.submitTitle.text, @"title",

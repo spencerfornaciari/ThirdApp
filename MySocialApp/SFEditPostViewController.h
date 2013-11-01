@@ -21,8 +21,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *editTitle;
 @property (weak, nonatomic) IBOutlet UITextField *editContent;
 
-@property (weak, nonatomic) NSString *editID;
 @property (weak, nonatomic) NSDictionary *editDictionary;
+@property (weak, nonatomic) NSString *editID;
 
 @property (strong) NSManagedObject *editPost;
 
