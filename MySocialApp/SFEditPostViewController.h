@@ -21,9 +21,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *editTitle;
 @property (weak, nonatomic) IBOutlet UITextField *editContent;
 
+@property (weak, nonatomic) NSString *editID;
+@property (weak, nonatomic) NSDictionary *editDictionary;
+
 @property (strong) NSManagedObject *editPost;
 
--(void)updateJSON:(NSDictionary *)updateDictionary updateID:(NSString *)idString;
+-(void)updateJSON:(NSDictionary *)updateDictionary;
 
 -(IBAction)saveEditButton:(id)sender;
 

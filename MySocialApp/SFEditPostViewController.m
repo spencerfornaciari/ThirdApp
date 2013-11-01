@@ -42,6 +42,12 @@
         [self.editTitle setText:[self.editPost valueForKey:@"title"]];
         [self.editContent setText:[self.editPost valueForKey:@"content"]];
     }
+    
+//    if (self.editID) {
+//        [self.editUserName setText:[self.editDictionary objectForKey:@"userName"]];
+//        [self.editTitle setText:[self.editDictionary objectForKey:@"title"]];
+//        [self.editContent setText:[self.editDictionary objectForKey:@"content"]];
+//    }
 	// Do any additional setup after loading the view.
 }
 
@@ -62,10 +68,9 @@
     //Update JSON item in feed
     
 //    NSDictionary *updateJSONToSend = [[NSDictionary alloc] initWithObjectsAndKeys:self.editUserName.text, @"userName",                                                                                                           self.editTitle.text, @"title", self.editContent.text, @"content", nil];
+//   
 //    
-//    NSString *id = @"5269fac259355a0b00000002";
-//    
-//    [self updateJSON:updateJSONToSend updateID:id];
+//  [self updateJSON:updateJSONToSend];
     
     [self.delegateEdit updatePost:updatedPostItem forObject:self.editPost];
     [self.navigationController popViewControllerAnimated:YES];
@@ -73,13 +78,13 @@
 
 
 //Update JSON Post from post ID
--(void)updateJSON:(NSDictionary *)updateDictionary updateID:(NSString *)idString
+-(void)updateJSON:(NSDictionary *)updateDictionary
 {
     NSData* jsonData = [NSJSONSerialization dataWithJSONObject:updateDictionary
                                                        options:NSJSONWritingPrettyPrinted error:nil];
     
     NSString *defaultURL = @"http://cfpost.minddiaper.com/post/update/";
-    NSString *newURL = [NSString stringWithFormat:@"%@%@", defaultURL, idString];
+    NSString *newURL = [NSString stringWithFormat:@"%@%@", defaultURL, self.editID];
     NSLog(@"%@", newURL);
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];

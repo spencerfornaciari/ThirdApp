@@ -14,9 +14,7 @@
 
 @implementation SFPostTableViewController
 {
-    NSDictionary *_tempDictionary;
-    NSDictionary *_JSONDictionary;
-    NSArray *_JSONArray;
+    NSMutableArray *_JSONArray;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -57,7 +55,8 @@
     {
         self.colorArray = [[NSMutableArray alloc] init];
         
-        for (int i = 0; i < self.posts.count ; (i = i + 1))
+//      for (int i = 0; i < self.posts.count ; (i = i + 1))
+        for (int i = 0; i < _JSONArray.count; (i = i + 1))
         {
             [self.colorArray insertObject:[UIColor getRandomColor] atIndex:i];
         }
@@ -83,7 +82,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.posts.count;
+    //return self.posts.count;
+    return _JSONArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -92,18 +92,23 @@
     SFPostTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    NSManagedObject *post = [self.posts objectAtIndex:indexPath.row];
+    //NSManagedObject *post = [self.posts objectAtIndex:indexPath.row];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"h:mm a 'on' MM/dd/yyyy"];
-    NSString *postDate = [dateFormatter stringFromDate:[post valueForKey:@"timeStamp"]];
+    //NSString *postDate = [dateFormatter stringFromDate:[post valueForKey:@"timeStamp"]];
+   // NSString *postDate = [dateFormatter stringFromDate:[_JSONArray[indexPath.row] objectForKey:@"createdAt"]];
     
-    cell.userNameLabel.text = [post valueForKey:@"userName"];
-    cell.titleLabel.text = [post valueForKey:@"title"];
-    cell.contentLabel.text = [post valueForKey:@"content"];
-    cell.timeStampLabel.text = postDate;
+    //cell.userNameLabel.text = [post valueForKey:@"userName"];
+    //cell.titleLabel.text = [post valueForKey:@"title"];
+    //cell.contentLabel.text = [post valueForKey:@"content"];
+    //cell.timeStampLabel.text = postDate;
     
-    //cell.userNameLabel.text = [_JSONArray[indexPath.row] objectForKey:@"author"];
+    cell.userNameLabel.text = [_JSONArray[indexPath.row] objectForKey:@"userName"];
+    cell.titleLabel.text = [_JSONArray[indexPath.row] objectForKey:@"title"];
+    cell.contentLabel.text = [_JSONArray[indexPath.row] objectForKey:@"content"];
+    cell.timeStampLabel.text = [_JSONArray[indexPath.row] objectForKey:@"createdAt"];
+    //cell.timeStampLabel.text = postDate;
     
     cell.backgroundColor = self.colorArray[indexPath.row];
     
@@ -157,9 +162,14 @@
 {
     if ([[segue identifier] isEqualToString:@"EditPostSegue"])
     {
+        NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
+        NSLog(@"%@", ip);
+        
         NSManagedObject *selectedPost = [self.posts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
         SFEditPostViewController *destViewController = segue.destinationViewController;
         destViewController.editPost = selectedPost;
+        //destViewController.editID = [_JSONArray[cellRow] objectForKey@"id"];
+        //destViewController.editDictionary = [_JSONArray[ip.row]];
         destViewController.delegateEdit = self;
     }
     
@@ -231,11 +241,35 @@
 //Take a JSON feed an set it as an NSDictionary variable
 -(void)getURLData
 {
-    NSURL *url = [NSURL URLWithString:@"http://blog.teamtreehouse.com/api/get_recent_summary/"];
+    NSURL *url = [NSURL URLWithString:@"http://cfpost.minddiaper.com/post"];
     NSData *JSONData = [NSData dataWithContentsOfURL:url];
-    _JSONDictionary = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:nil];
-    _JSONArray = _JSONDictionary[@"posts"];
+   //_JSONDictionary = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:nil];
+    _JSONArray = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:nil];
+   NSLog(@"%@", [_JSONArray[0] objectForKey:@"id"]);
     
+for (NSDictionary *dictionary in _JSONArray)
+{
+    SFPostModel *post = [[SFPostModel alloc] initWithDictionary: dictionary];
+
+}
+    
+        //        for (int i = 0; i < self.posts.count ; (i = i + 1))
+        for (int i = 0; i < _JSONArray.count; (i = i + 1))
+        {
+            if ([_JSONArray[i] objectForKey:@"userName"] == 0) {
+                //[_JSONArray[i] objectForKey:@"userName"] = @"Default username";
+       //         [_JSONArray replaceObjectAtIndex:[i][ @"userName"] withObject:@"Default username"];
+                //NSLog(@"Default username at %d", i);
+            }
+            
+            if ([_JSONArray[i] objectForKey:@"title"] == 0) {
+                //[_JSONArray[i] objectForKey:@"title"] = @"Default title";
+            }
+            
+            if ([_JSONArray[i] objectForKey:@"content"] == 0) {
+                //[_JSONArray[i] objectForKey:@"content"] = @"Default content";
+            }
+        }
     
     //NSURLSession JSON download
 //  NSDictionary *tempDictionary = [[NSDictionary alloc] init];
