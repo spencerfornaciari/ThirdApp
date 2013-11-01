@@ -91,10 +91,7 @@
     static NSString *CellIdentifier = @"Cell";
     SFPostTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
-    //Core Data Old Code
-    //NSManagedObject *post = [self.posts objectAtIndex:indexPath.row];
-    
+    // Configure the cell...    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"h:mm a 'on' MM/dd/yyyy"];
     
@@ -102,6 +99,7 @@
     cell.titleLabel.text = [_JSONArray[indexPath.row] objectForKey:@"title"];
     cell.contentLabel.text = [_JSONArray[indexPath.row] objectForKey:@"content"];
     cell.timeStampLabel.text = [_JSONArray[indexPath.row] objectForKey:@"createdAt"];
+    //cell.timeStampLabel.text = postDate;
     
     cell.backgroundColor = self.colorArray[indexPath.row];
     
@@ -156,12 +154,11 @@
     if ([[segue identifier] isEqualToString:@"EditPostSegue"])
     {
         NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
-        
         SFEditPostViewController *destViewController = segue.destinationViewController;
         
         //Old Core Data code
-        //NSManagedObject *selectedPost = [self.posts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
-        //destViewController.editPost = selectedPost;
+        NSManagedObject *selectedPost = [self.posts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        destViewController.editPost = selectedPost;
         
         destViewController.editDictionary = _JSONArray[ip.row];
         destViewController.delegateEdit = self;
@@ -231,12 +228,15 @@
     
 }
 
+
 //Take a JSON feed an set it as an NSDictionary variable
 -(void)getURLData
 {
     NSURL *url = [NSURL URLWithString:@"http://cfpost.minddiaper.com/post"];
     NSData *JSONData = [NSData dataWithContentsOfURL:url];
+   //_JSONDictionary = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:nil];
     _JSONArray = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:nil];
+   NSLog(@"%@", [_JSONArray[0] objectForKey:@"id"]);
     
 //for (NSDictionary *dictionary in _JSONArray)
 //{
@@ -261,7 +261,6 @@
                 //[_JSONArray[i] objectForKey:@"content"] = @"Default content";
             }
         }
-    
 }
 
 @end
